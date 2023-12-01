@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+//importing the react object and the useState function from 'react' module
+import React, { useState } from 'react'
+//importing the ColorBlock form into app.js folder 
+import ColorBlock from './Components/ColorBlock.js';
+import ColorForm from './Components/ColorForm.js';
 
+
+//defining our component App
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  let [colors, setColors] = useState([  'violet', 'lightblue', 'green', 'greenyellow', 'yellow', 'orange', 'red' ]) 
+
+  let colorMap = colors.map((color, i) => {
+    return (
+    <ColorBlock key={i} color={color} />
+    )
+  })
+  //iterating over each color to create a new array called 'colorMap'
+  const addColor = (newColor) => {
+    setColors([...colors, newColor])
+  }
+  //returning ColorBlock for each color in the array  
+  return ( 
+    <div className='App'>
+      {colorMap}
+      <ColorForm addColor={addColor} />
     </div>
+
   );
 }
 
 export default App;
+
+//Components 
+// ColorForm.js
+// 
+
+//Stateful Variables 
+// 1. colorsii9
